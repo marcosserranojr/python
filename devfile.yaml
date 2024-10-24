@@ -24,7 +24,7 @@ components:
             # The podman build -t <image> . && podman run <image> command will fail. 
             # Use podman build -t <image> . && podman push <image> && podman run <image> instead.
         - name: KUBEDOCK_ENABLED ## https://eclipse.dev/che/docs/stable/end-user-guide/running-containers-with-kubedock/
-          value: 'true'
+          value: 'false' #'true'
         - name: CONTAINER_HOST
           value: 'tcp://127.0.0.1:2475'
           
