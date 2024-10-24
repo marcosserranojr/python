@@ -25,8 +25,8 @@ components:
             # Use podman build -t <image> . && podman push <image> && podman run <image> instead.
         - name: KUBEDOCK_ENABLED ## https://eclipse.dev/che/docs/stable/end-user-guide/running-containers-with-kubedock/
           value: 'false' #'true'
-        - name: CONTAINER_HOST
-          value: 'tcp://127.0.0.1:2475'
+        #- name: CONTAINER_HOST
+        #  value: 'tcp://127.0.0.1:2475'
           
           # registry token path to be used for podman authentication. Created from "RegistryAuthTokenSecret.yaml"
         - name: REGISTRY_AUTH_FILE ## https://docs.podman.io/en/latest/markdown/podman-login.1.html#authfile-path
