@@ -1,0 +1,5 @@
+FROM quay.vapo.va.gov/vapo/va/python/python-312
+WORKDIR /opt/app-root/src
+COPY . .
+RUN pip install --no-cache-dir -r requirements.txt
+CMD ["python3", "./app.py"]
