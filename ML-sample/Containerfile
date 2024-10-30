@@ -1,6 +1,12 @@
-FROM quay.vapo.va.gov/vapo/va/python/python-312
+FROM registry.access.redhat.com/ubi9/python-312:1-25.1729767846
+#quay.vapo.va.gov/vapo/va/python/python-312
+USER root
+RUN dnf -y install python3-pip && python3 -m pip install --upgrade pip
+USER 1001
 WORKDIR /opt/app-root/src
-RUN dnf -y install python3-pip
 COPY . .
+#RUN   chgrp -R 0 /opt/app-root/src/ && \
+ #     chmod -R g=u /opt/app-root/src/ 
+ 
 RUN pip install --no-cache-dir -r requirements.txt
 CMD ["python3", "./app.py"]
