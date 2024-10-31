@@ -1,12 +1,7 @@
 python -m pip install --upgrade pip      
 
-python -m pip install -r requirements.txt   //This errored out so did the install individually 
+python -m pip install -r requirements.txt   
 
-python -m pip install scikit-learn
-
-python -m pip install pandas  
-
-python -m pip install joblib
 
 //NOTE: The above command redered the below message /////////
 
@@ -31,6 +26,6 @@ podman build -t quay.vapo.va.gov/marcos.serranojr/python-hello-world:1.1 .
 
 podman push quay.vapo.va.gov/marcos.serranojr/python-hello-world:1.1
 
-podman run -dit --name=python quay.vapo.va.gov/marcos.serranojr/python-hello-world:1.0 tail -f /dev/null
+podman run -dit --name=python quay.vapo.va.gov/marcos.serranojr/python-hello-world:1.1 tail -f /dev/null
 
 podman exec -it python /bin/bash

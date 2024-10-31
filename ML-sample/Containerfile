@@ -1,12 +1,23 @@
-FROM registry.access.redhat.com/ubi9/python-312:1-25.1729767846
-#quay.vapo.va.gov/vapo/va/python/python-312
-USER root
-RUN dnf -y install python3-pip && python3 -m pip install --upgrade pip
-USER 1001
+#======== BASE IMAGE =========================
+#FROM registry.access.redhat.com/ubi9/python-312:1-25.1729767846
+FROM quay.vapo.va.gov/vapo/va/python/python-312
+
+#======== INSTALL PIP and UPDATE or just UPDATE to LATEST VERSION =========
+
+#RUN microdnf -y install python3-pip && python3 -m pip install --upgrade pip
+RUN  python3.12 -m pip install --upgrade pip
+
+#======== WORKING DIRECTORY =============================================
 WORKDIR /opt/app-root/src
 COPY . .
-#RUN   chgrp -R 0 /opt/app-root/src/ && \
- #     chmod -R g=u /opt/app-root/src/ 
  
-RUN pip install --no-cache-dir -r requirements.txt
+#======== INSTALL DEPENDENCY PACKAGES
+
+RUN python3.12 -m pip install --no-cache-dir -r requirements.txt
+
+#======= UPDATE DIRECTORY PERMISSION TO ENABLE MODEL FILE TO BE CREATED =======
+
+RUN   chgrp -R 0 /opt/app-root/src/ && \
+      chmod -R g=u /opt/app-root/src/
+      
 CMD ["python3", "./app.py"]
