@@ -15,7 +15,7 @@ COPY . .
 
 RUN python3.12 -m pip install --no-cache-dir -r requirements.txt
 
-#======= UPDATE DIRECTORY PERMISSION TO ENABLE MODEL FILE TO BE CREATED =======
+#======= UPDATE DIRECTORY PERMISSION TO ENABLE MODEL FILE TO BE SAVED =======
 
 RUN   chgrp -R 0 /opt/app-root/src/ && \
       chmod -R g=u /opt/app-root/src/
